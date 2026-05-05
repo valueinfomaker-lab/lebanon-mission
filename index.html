@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>레바논 선교 — 김요한·이수정 선교사</title>
+  <meta name="description" content="레바논 베이루트에서 사역하는 김요한·이수정 선교사 홈페이지. 기도 제목과 후원 정보를 나눕니다." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://valueinfomaker-lab.github.io/lebanon-mission/" />
+  <meta property="og:title"       content="레바논 선교 — 김요한·이수정 선교사" />
+  <meta property="og:description" content="레바논 베이루트에서 사역하는 김요한·이수정 선교사 홈페이지. 기도 제목과 후원 정보를 나눕니다." />
+  <meta property="og:locale"      content="ko_KR" />
+  <meta name="twitter:card"       content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
@@ -90,12 +97,76 @@
       border: 1.5px solid rgba(255,255,255,0.75);
     }
     .btn-outline:hover { background: rgba(255,255,255,0.12); }
-    .btn-cedar-outline {
-      background: transparent;
-      color: var(--cedar);
-      border: 1.5px solid var(--cedar);
+    /* ==================== 햄버거 메뉴 ==================== */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
     }
-    .btn-cedar-outline:hover { background: var(--cedar); color: #fff; }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cedar);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      background: rgba(245,239,228,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(122,92,60,0.12);
+      padding: 0.5rem 1.5rem 1.2rem;
+      z-index: 99;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 1rem;
+      color: var(--text);
+      border-bottom: 1px solid rgba(122,92,60,0.08);
+      transition: color 0.18s;
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--cedar); }
+
+    /* ==================== 토스트 ==================== */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--cedar-d);
+      color: #fff;
+      padding: 0.75rem 1.6rem;
+      border-radius: 3rem;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 300;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(90,62,36,0.3);
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
 
     /* 스크롤 페이드인 */
     .fade-in {
@@ -142,8 +213,22 @@
       font-weight: 400;
       color: var(--muted);
       transition: color 0.18s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--cedar);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
     }
     .nav-links a:hover { color: var(--cedar); }
+    .nav-links a.active { color: var(--cedar); font-weight: 700; }
+    .nav-links a.active::after { transform: scaleX(1); }
 
     /* ==================== HERO ==================== */
     #hero {
@@ -257,14 +342,6 @@
       border-radius: var(--radius);
     }
 
-    .photo-placeholder-text {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 1rem;
-    }
 
     .about-badge {
       position: absolute;
@@ -372,7 +449,6 @@
     .support-left {}
     .support-header { margin-bottom: 2rem; }
 
-    .support-body { font-size: 0.97rem; color: var(--muted); max-width: 58ch; margin-bottom: 2.5rem; }
 
     .account-grid {
       display: grid;
@@ -432,14 +508,6 @@
     .copy-btn:hover { background: var(--cedar); color: #fff; transform: scale(1.03); }
     .copy-btn.copied { background: var(--olive); color: #fff; border-color: var(--olive); }
 
-    .support-notice {
-      background: rgba(122,92,60,0.06);
-      border-left: 3px solid var(--warm);
-      border-radius: 0 0.6rem 0.6rem 0;
-      padding: 1rem 1.4rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
 
     /* ==================== CONTACT ==================== */
     #contact {
@@ -529,6 +597,7 @@
     /* ==================== 반응형 (≤ 680px) ==================== */
     @media (max-width: 680px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
 
       .about-grid,
       .support-inner,
@@ -555,7 +624,18 @@
       <li><a href="#support">후원</a></li>
       <li><a href="#contact">연락하기</a></li>
     </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#hero"    onclick="closeMobileNav()">홈</a>
+    <a href="#about"   onclick="closeMobileNav()">소개</a>
+    <a href="#prayer"  onclick="closeMobileNav()">기도 제목</a>
+    <a href="#support" onclick="closeMobileNav()">후원</a>
+    <a href="#contact" onclick="closeMobileNav()">연락하기</a>
+  </div>
 
   <!-- ==================== HERO ==================== -->
   <section id="hero">
@@ -672,7 +752,7 @@
             <ellipse cx="312" cy="270" rx="28" ry="11" fill="#6a8a50"/>
             <ellipse cx="312" cy="252" rx="21" ry="9"  fill="#7a9a5c"/>
             <ellipse cx="312" cy="237" rx="14" ry="8"  fill="#88a864"/>
-            <ellipse cx="312" cy="224" rx="9"  cy="6"  fill="#96b870"/>
+            <ellipse cx="312" cy="224" rx="9"  ry="6"  fill="#96b870"/>
 
             <!-- 올리브 나무 (중간 오른쪽) -->
             <rect x="255" y="305" width="7" height="50" rx="2" fill="#8a6830"/>
@@ -1006,58 +1086,101 @@
     </p>
   </footer>
 
+  <div class="toast" id="toast"></div>
+
   <!-- ==================== JavaScript ==================== -->
   <script>
-    // 올해 연도 자동 설정
+    // 올해 연도
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 스크롤 페이드인 (IntersectionObserver)
-    const observer = new IntersectionObserver(
+    // ── 스크롤 페이드인
+    const fadeObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            fadeObserver.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
-
     document.querySelectorAll('.fade-in').forEach((el, i) => {
       el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-      observer.observe(el);
+      fadeObserver.observe(el);
     });
 
-    // 계좌번호 복사 (clipboard API)
+    // ── Nav 현재 섹션 활성화
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '-64px 0px -35% 0px' }
+    );
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+    // ── 햄버거 메뉴
+    function toggleMobileNav() {
+      const btn = document.querySelector('.nav-hamburger');
+      const menu = document.getElementById('mobile-nav');
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+      btn.setAttribute('aria-label', menu.classList.contains('open') ? '메뉴 닫기' : '메뉴 열기');
+    }
+    function closeMobileNav() {
+      document.querySelector('.nav-hamburger').classList.remove('open');
+      document.getElementById('mobile-nav').classList.remove('open');
+    }
+
+    // ── 토스트
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // ── 계좌번호 복사
     function copyAccount(elementId, btn) {
       const text = document.getElementById(elementId).textContent.trim();
+      const original = btn.innerHTML;
 
-      navigator.clipboard.writeText(text).then(() => {
-        const original = btn.innerHTML;
+      const done = () => {
         btn.innerHTML = '<span>✅</span> 복사됨!';
         btn.classList.add('copied');
+        showToast('계좌번호가 복사되었습니다');
         setTimeout(() => {
           btn.innerHTML = original;
           btn.classList.remove('copied');
         }, 2000);
-      }).catch(() => {
-        // clipboard API 미지원 환경 fallback
-        const range = document.createRange();
-        const el = document.getElementById(elementId);
-        range.selectNode(el);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
+      };
 
-        btn.innerHTML = '<span>✅</span> 복사됨!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.innerHTML = '<span>📋</span> 계좌번호 복사';
-          btn.classList.remove('copied');
-        }, 2000);
-      });
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+      } else {
+        fallbackCopy(text, done);
+      }
+    }
+
+    function fallbackCopy(text, callback) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      callback();
     }
 
   </script>
