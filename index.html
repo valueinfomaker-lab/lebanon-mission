@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>레바논 선교 — 김요한·이수정 선교사</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==================== CSS 변수 ==================== */
+    :root {
+      --sand:    #F5EFE4;
+      --white:   #FFFDF8;
+      --cedar:   #7A5C3C;
+      --cedar-d: #5A3E24;
+      --olive:   #8B9A6B;
+      --sky:     #A8C4D4;
+      --warm:    #C8956C;
+      --text:    #3A2E22;
+      --muted:   #8A7A68;
+      --radius:  1.2rem;
+    }
+
+    /* ==================== 리셋 & 기본 ==================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--sand);
+      line-height: 1.85;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ==================== 유틸 ==================== */
+    .section-label {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--warm);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.4;
+      color: var(--cedar-d);
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 52ch;
+      margin-top: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 3rem;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-filled {
+      background: var(--cedar);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(90,62,36,0.22);
+    }
+    .btn-filled:hover { background: var(--cedar-d); box-shadow: 0 6px 22px rgba(90,62,36,0.32); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.75);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+    .btn-cedar-outline {
+      background: transparent;
+      color: var(--cedar);
+      border: 1.5px solid var(--cedar);
+    }
+    .btn-cedar-outline:hover { background: var(--cedar); color: #fff; }
+
+    /* 스크롤 페이드인 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==================== 네비게이션 ==================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      background: rgba(245,239,228,0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(122,92,60,0.12);
+    }
+
+    .nav-logo {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--cedar-d);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+      transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--cedar); }
+
+    /* ==================== HERO ==================== */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px clamp(1.5rem, 6vw, 5rem) 4rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 30% 40%, rgba(168,196,212,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 80% 70%, rgba(139,154,107,0.20) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 80% at 50% 0%, rgba(200,149,108,0.12) 0%, transparent 50%),
+        var(--sand);
+    }
+
+    .hero-inner { max-width: 680px; }
+
+    .hero-eyebrow {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--warm);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      line-height: 1.3;
+      color: var(--cedar-d);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.2rem;
+      margin-bottom: 2.8rem;
+      font-size: 0.88rem;
+      color: var(--cedar);
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+    .hero-scroll {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--warm), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /* ==================== ABOUT ==================== */
+    #about {
+      padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--sky) 0%, var(--olive) 60%, var(--cedar) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    .photo-placeholder-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--cedar-d);
+      color: #fff;
+      border-radius: 1rem;
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(90,62,36,0.28);
+    }
+    .about-badge .year { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 600; }
+    .about-badge .badge-sub { font-size: 0.72rem; color: rgba(255,255,255,0.75); }
+
+    .about-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.4rem 0 1.8rem;
+    }
+    .chip {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 3rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+    }
+    .chip-cedar { background: rgba(122,92,60,0.1); color: var(--cedar); }
+    .chip-olive { background: rgba(139,154,107,0.15); color: #5a6e42; }
+    .chip-sky   { background: rgba(168,196,212,0.25); color: #4a7a92; }
+
+    .about-body p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+
+    /* ==================== PRAYER ==================== */
+    #prayer {
+      padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+      background: var(--cedar-d);
+    }
+
+    .prayer-header { text-align: center; margin-bottom: 3.5rem; }
+    .prayer-header .section-label { color: var(--warm); }
+    .prayer-header .section-title { color: var(--white); }
+    .prayer-header .section-desc { color: rgba(255,253,248,0.65); margin-left: auto; margin-right: auto; }
+
+    .prayer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .prayer-card {
+      background: rgba(255,253,248,0.07);
+      border: 1px solid rgba(255,253,248,0.12);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: background 0.22s, transform 0.22s;
+    }
+    .prayer-card:hover {
+      background: rgba(255,253,248,0.12);
+      transform: translateY(-3px);
+    }
+
+    .prayer-num {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--warm);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .prayer-card h3 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .prayer-card p { font-size: 0.9rem; color: rgba(255,253,248,0.68); line-height: 1.75; }
+
+    /* ==================== SUPPORT ==================== */
+    #support {
+      padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+      background: var(--sand);
+    }
+
+    .support-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .support-left {}
+    .support-header { margin-bottom: 2rem; }
+
+    .support-body { font-size: 0.97rem; color: var(--muted); max-width: 58ch; margin-bottom: 2.5rem; }
+
+    .account-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .support-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(90,62,36,0.14);
+      aspect-ratio: 4/5;
+    }
+    .support-photo svg { display: block; width: 100%; height: 100%; }
+
+    .account-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: 0 4px 20px rgba(90,62,36,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .account-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(90,62,36,0.13); }
+
+    .account-bank {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--cedar-d);
+      margin-bottom: 0.4rem;
+    }
+    .account-holder { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+    .account-number {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      color: var(--cedar);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 3rem;
+      background: transparent;
+      border: 1.5px solid var(--cedar);
+      color: var(--cedar);
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, transform 0.15s;
+    }
+    .copy-btn:hover { background: var(--cedar); color: #fff; transform: scale(1.03); }
+    .copy-btn.copied { background: var(--olive); color: #fff; border-color: var(--olive); }
+
+    .support-notice {
+      background: rgba(122,92,60,0.06);
+      border-left: 3px solid var(--warm);
+      border-radius: 0 0.6rem 0.6rem 0;
+      padding: 1rem 1.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ==================== CONTACT ==================== */
+    #contact {
+      padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      max-width: 900px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .location-card {
+      background: var(--sand);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .location-info {
+      padding: 1.4rem;
+    }
+    .location-info h3 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--cedar-d);
+      margin-bottom: 0.5rem;
+    }
+    .location-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .location-row span:first-child { flex-shrink: 0; }
+
+
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--sand);
+      border-radius: 0.8rem;
+      transition: background 0.18s, transform 0.18s;
+      color: var(--text);
+    }
+    .contact-link:hover { background: rgba(122,92,60,0.1); transform: translateX(4px); }
+
+    .contact-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .icon-email { background: rgba(168,196,212,0.4); }
+    .icon-kakao { background: rgba(254,229,0,0.35); }
+    .icon-insta { background: rgba(200,149,108,0.25); }
+
+    .contact-link-text strong { display: block; font-size: 0.9rem; font-weight: 500; }
+    .contact-link-text span { font-size: 0.82rem; color: var(--muted); }
+
+
+    /* ==================== 푸터 ==================== */
+    footer {
+      background: var(--cedar-d);
+      color: rgba(255,253,248,0.55);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.82rem;
+    }
+    footer a { color: rgba(255,253,248,0.75); }
+    footer a:hover { color: #fff; }
+
+    /* ==================== 반응형 (≤ 680px) ==================== */
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+
+      .about-grid,
+      .support-inner,
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .support-photo { aspect-ratio: 3/2; }
+
+      .about-badge { bottom: 0.5rem; right: 0.5rem; }
+
+      .hero-btns .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== 네비게이션 ==================== -->
+  <nav>
+    <div class="nav-logo">레바논 선교 🌿</div>
+    <ul class="nav-links">
+      <li><a href="#hero">홈</a></li>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#prayer">기도 제목</a></li>
+      <li><a href="#support">후원</a></li>
+      <li><a href="#contact">연락하기</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-inner fade-in">
+      <p class="hero-eyebrow">Lebanon Mission · 레바논 선교</p>
+
+      <h1 class="hero-title">
+        작은 씨앗 하나가<br />
+        레바논 땅에 뿌리를 내립니다
+      </h1>
+
+      <p class="hero-sub">
+        <strong>김요한</strong> · 이수정 선교사
+      </p>
+
+      <div class="hero-meta">
+        <span>📍 베이루트, 레바논</span>
+        <span>🕊 여의도순복음교회</span>
+        <span>📅 2019년~</span>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#support" class="btn btn-filled">후원하기</a>
+        <a href="#prayer" class="btn btn-outline">기도 제목 보기</a>
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="about-grid">
+
+      <div class="about-photo-wrap fade-in">
+        <div class="about-photo">
+          <svg viewBox="0 0 360 450" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b8d8f0"/>
+                <stop offset="55%" stop-color="#e8c99a"/>
+                <stop offset="100%" stop-color="#d4956a"/>
+              </linearGradient>
+              <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5ba3c9"/>
+                <stop offset="100%" stop-color="#3a7fa8"/>
+              </linearGradient>
+              <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c8a87a"/>
+                <stop offset="100%" stop-color="#a07850"/>
+              </linearGradient>
+              <radialGradient id="sun" cx="75%" cy="30%" r="15%">
+                <stop offset="0%" stop-color="#fff4b0" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#f0c060" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- 하늘 -->
+            <rect width="360" height="450" fill="url(#sky)"/>
+            <!-- 태양 글로우 -->
+            <circle cx="270" cy="90" r="55" fill="url(#sun)"/>
+            <circle cx="270" cy="90" r="22" fill="#fff8c0" opacity="0.85"/>
+
+            <!-- 구름 -->
+            <ellipse cx="80" cy="70" rx="45" ry="18" fill="white" opacity="0.65"/>
+            <ellipse cx="110" cy="62" rx="30" ry="14" fill="white" opacity="0.7"/>
+            <ellipse cx="55" cy="75" rx="28" ry="12" fill="white" opacity="0.55"/>
+
+            <ellipse cx="210" cy="50" rx="38" ry="14" fill="white" opacity="0.5"/>
+            <ellipse cx="235" cy="44" rx="22" ry="10" fill="white" opacity="0.55"/>
+
+            <!-- 지중해 바다 -->
+            <rect x="0" y="250" width="360" height="80" fill="url(#sea)"/>
+            <!-- 물결 하이라이트 -->
+            <path d="M0 258 Q45 252 90 258 Q135 264 180 258 Q225 252 270 258 Q315 264 360 258" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+            <path d="M0 270 Q45 264 90 270 Q135 276 180 270 Q225 264 270 270 Q315 276 360 270" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+            <path d="M0 284 Q60 278 120 284 Q180 290 240 284 Q300 278 360 284" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+
+            <!-- 베이루트 스카이라인 실루엣 -->
+            <rect x="20"  y="205" width="18" height="48" rx="2" fill="#8a6840" opacity="0.6"/>
+            <rect x="45"  y="190" width="24" height="63" rx="2" fill="#7a5c30" opacity="0.65"/>
+            <rect x="75"  y="210" width="15" height="43" rx="2" fill="#8a6840" opacity="0.55"/>
+            <rect x="96"  y="198" width="20" height="55" rx="2" fill="#6e4e28" opacity="0.6"/>
+            <rect x="122" y="215" width="14" height="38" rx="2" fill="#8a6840" opacity="0.5"/>
+            <!-- 오른쪽 건물 -->
+            <rect x="280" y="208" width="16" height="45" rx="2" fill="#7a5c30" opacity="0.55"/>
+            <rect x="302" y="196" width="22" height="57" rx="2" fill="#6e4e28" opacity="0.6"/>
+            <rect x="330" y="212" width="14" height="41" rx="2" fill="#8a6840" opacity="0.5"/>
+            <!-- 창문 -->
+            <rect x="50"  y="198" width="4" height="4" rx="1" fill="#f0d090" opacity="0.8"/>
+            <rect x="58"  y="198" width="4" height="4" rx="1" fill="#f0d090" opacity="0.8"/>
+            <rect x="50"  y="208" width="4" height="4" rx="1" fill="#f0d090" opacity="0.6"/>
+            <rect x="58"  y="208" width="4" height="4" rx="1" fill="#f0d090" opacity="0.9"/>
+            <rect x="306" y="204" width="4" height="4" rx="1" fill="#f0d090" opacity="0.8"/>
+            <rect x="316" y="204" width="4" height="4" rx="1" fill="#f0d090" opacity="0.6"/>
+
+            <!-- 땅/언덕 -->
+            <path d="M0 330 Q90 310 180 325 Q270 340 360 318 L360 450 L0 450 Z" fill="url(#ground)"/>
+            <!-- 돌길 느낌 -->
+            <path d="M0 370 Q90 355 180 368 Q270 381 360 362 L360 450 L0 450 Z" fill="#b89060" opacity="0.6"/>
+
+            <!-- 왼쪽 시더나무 (레바논 상징) -->
+            <rect x="42" y="280" width="10" height="80" rx="3" fill="#7a5530"/>
+            <ellipse cx="47" cy="264" rx="32" ry="12" fill="#6a8a50"/>
+            <ellipse cx="47" cy="245" rx="24" ry="10" fill="#7a9a5c"/>
+            <ellipse cx="47" cy="228" rx="17" ry="9"  fill="#88a864"/>
+            <ellipse cx="47" cy="214" rx="11" ry="7"  fill="#96b870"/>
+
+            <!-- 오른쪽 시더나무 -->
+            <rect x="308" y="285" width="9" height="70" rx="3" fill="#7a5530"/>
+            <ellipse cx="312" cy="270" rx="28" ry="11" fill="#6a8a50"/>
+            <ellipse cx="312" cy="252" rx="21" ry="9"  fill="#7a9a5c"/>
+            <ellipse cx="312" cy="237" rx="14" ry="8"  fill="#88a864"/>
+            <ellipse cx="312" cy="224" rx="9"  cy="6"  fill="#96b870"/>
+
+            <!-- 올리브 나무 (중간 오른쪽) -->
+            <rect x="255" y="305" width="7" height="50" rx="2" fill="#8a6830"/>
+            <ellipse cx="258" cy="295" rx="20" ry="14" fill="#8a9a6a" opacity="0.9"/>
+            <ellipse cx="252" cy="290" rx="14" ry="10" fill="#7a8a58" opacity="0.8"/>
+            <ellipse cx="265" cy="292" rx="13" ry="9"  fill="#96a870" opacity="0.8"/>
+
+            <!-- 가족 실루엣 (중앙) -->
+            <!-- 아빠 -->
+            <circle cx="162" cy="320" r="13" fill="#4a3018"/>
+            <path d="M149 333 Q150 360 162 365 Q174 360 175 333 Q168 328 162 327 Q156 328 149 333 Z" fill="#4a3018"/>
+            <!-- 엄마 -->
+            <circle cx="198" cy="322" r="12" fill="#5a3820"/>
+            <path d="M186 334 Q186 358 198 364 Q210 358 210 334 Q204 329 198 328 Q192 329 186 334 Z" fill="#6a4830"/>
+            <!-- 첫째 아이 -->
+            <circle cx="180" cy="335" r="9" fill="#7a5840"/>
+            <path d="M171 344 Q171 362 180 366 Q189 362 189 344 Q185 340 180 339 Q175 340 171 344 Z" fill="#7a5840"/>
+            <!-- 둘째 아이 (작음) -->
+            <circle cx="145" cy="345" r="7" fill="#8a6850"/>
+            <path d="M138 352 Q138 366 145 369 Q152 366 152 352 Q149 349 145 348 Q141 349 138 352 Z" fill="#8a6850"/>
+
+            <!-- 하단 텍스트 배경 -->
+            <rect x="0" y="415" width="360" height="35" fill="rgba(60,38,16,0.55)"/>
+            <text x="180" y="437" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,248,225,0.92)" font-style="italic" letter-spacing="1">김요한 · 이수정 선교사 가족</text>
+          </svg>
+        </div>
+
+        <div class="about-badge">
+          <div class="year">2019</div>
+          <div class="badge-sub">년부터 레바논에서</div>
+        </div>
+      </div>
+
+      <div class="about-body fade-in">
+        <p class="section-label">About us</p>
+        <h2 class="section-title">
+          레바논 땅에서<br />하나님의 사랑을 전합니다
+        </h2>
+
+        <div class="about-chips">
+          <span class="chip chip-cedar">🏛 여의도순복음교회</span>
+          <span class="chip chip-sky">📍 베이루트</span>
+        </div>
+
+        <div>
+          <p>
+            저희는 여의도순복음교회의 파송을 받아 2019년부터 레바논 베이루트에서
+            사역하고 있습니다. 레바논은 지중해의 진주라 불릴 만큼 아름다운 땅이지만,
+            오랜 내전의 상흔과 2020년 베이루트 폭발 참사, 그리고 극심한 경제 위기로
+            많은 이웃들이 하루하루를 힘겹게 살아가고 있습니다.
+          </p>
+          <p>
+            저희는 현지 아랍어를 배우고 이웃들과 함께 밥을 먹으며 신뢰를 쌓아 왔습니다.
+            현재는 난민 어린이를 위한 방과후 교실 운영, 지역 보건소와 연계한 의료 봉사,
+            그리고 가정 소그룹 모임을 통해 복음을 나누고 있습니다.
+          </p>
+          <p>
+            멀리서 보내주시는 기도 한 편이 이 땅에 닿고 있음을 매일 실감합니다.
+            함께 걸어주셔서 진심으로 감사합니다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PRAYER ==================== -->
+  <section id="prayer">
+    <div class="prayer-header fade-in">
+      <p class="section-label">Prayer Requests</p>
+      <h2 class="section-title">함께 기도해 주세요</h2>
+      <p class="section-desc">
+        여러분의 한 편의 기도가 레바논 땅에 닿습니다.
+        이 기도 제목을 붙들고 함께 기도해 주시면 큰 힘이 됩니다.
+      </p>
+    </div>
+
+    <div class="prayer-grid">
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">1</div>
+        <h3>방과후 교실 아이들을 위해</h3>
+        <p>매주 화·목 운영하는 난민 어린이 방과후 교실에 30명의 아이들이 나오고
+           있습니다. 배움의 기쁨을 알아가는 이 아이들이 하나님의 사랑 안에서
+           자라갈 수 있도록 기도해 주세요.</p>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">2</div>
+        <h3>파트너 현지인 알리를 위해</h3>
+        <p>6개월 전 믿음을 고백한 알리(가명)가 가족의 반대와 사회적 압박 속에서도
+           믿음을 지킬 수 있도록, 그리고 그가 장차 이 땅의 일꾼이 되도록
+           함께 기도해 주세요.</p>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">3</div>
+        <h3>요한·수정 가족의 건강</h3>
+        <p>첫째 은혜(8세)와 둘째 민준(5세)이 낯선 환경에서도 건강하게 자라고
+           있습니다. 두 아이의 적응과 저희 부부의 체력을 지켜주시도록
+           기도해 주세요.</p>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">4</div>
+        <h3>레바논 교회 연합을 위해</h3>
+        <p>종파와 배경이 다른 현지 교회들이 연합하여 사회 재건에 함께 나설 수
+           있도록, 그리고 저희가 그 다리 역할을 잘 감당할 수 있도록
+           기도해 주세요.</p>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">5</div>
+        <h3>재정 후원자들을 위해</h3>
+        <p>매달 변함없이 기도와 후원으로 함께해 주시는 모든 분들에게 하나님의
+           풍성한 은혜가 넘치기를 기도합니다. 그분들의 헌신이 이 땅에서
+           열매 맺기를 기도해 주세요.</p>
+      </div>
+
+      <div class="prayer-card fade-in">
+        <div class="prayer-num">6</div>
+        <h3>레바논의 평화와 회복을 위해</h3>
+        <p>수십 년의 분쟁과 경제 붕괴로 지쳐있는 레바논 전체를 위해 기도해
+           주세요. 이 땅에 진정한 화해와 회복이 임하고, 복음이 새 길을 열어가도록
+           함께 기도해 주세요.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SUPPORT ==================== -->
+  <section id="support">
+    <div class="support-inner">
+
+      <!-- 좌: 헤더 + 계좌 -->
+      <div class="support-left fade-in">
+        <div class="support-header">
+          <p class="section-label">Support</p>
+          <h2 class="section-title">후원으로 함께해 주세요</h2>
+          <p class="section-desc">
+            보내주시는 후원금은 현지 어린이 교육, 의료 봉사, 그리고 사역자 생활비에
+            소중하게 사용됩니다. 함께해 주시는 모든 분들께 감사드립니다.
+          </p>
+        </div>
+
+        <div class="account-grid">
+          <div class="account-card">
+            <div class="account-bank">국민은행</div>
+            <div class="account-holder">예금주: 김요한</div>
+            <div class="account-number" id="acct1">123-456-78-901234</div>
+            <button class="copy-btn" onclick="copyAccount('acct1', this)">
+              <span>📋</span> 계좌번호 복사
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우: 현지 사역 사진 -->
+      <div class="support-photo fade-in">
+        <!-- 실제 사역 사진: <img src="mission-photo.jpg" alt="현지 사역" style="width:100%;height:100%;object-fit:cover;"> 로 교체 -->
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f5e8d0"/>
+              <stop offset="100%" stop-color="#e0c8a0"/>
+            </linearGradient>
+            <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8d8b8"/>
+              <stop offset="100%" stop-color="#d4c090"/>
+            </linearGradient>
+            <radialGradient id="light" cx="50%" cy="10%" r="60%">
+              <stop offset="0%" stop-color="#fff8e8" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5e8d0" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- 방 배경 -->
+          <rect width="400" height="500" fill="url(#room)"/>
+          <rect width="400" height="300" fill="url(#wall)"/>
+          <!-- 천장 조명 글로우 -->
+          <ellipse cx="200" cy="0" rx="160" ry="80" fill="url(#light)"/>
+
+          <!-- 칠판 -->
+          <rect x="60" y="40" width="280" height="140" rx="6" fill="#4a6a50"/>
+          <rect x="68" y="48" width="264" height="124" rx="4" fill="#556e5a"/>
+          <!-- 칠판 글씨: 아랍어 + 한글 -->
+          <text x="200" y="88" text-anchor="middle" font-family="serif" font-size="18" fill="rgba(255,255,255,0.85)" font-weight="bold">بِسْمِ اللّٰهِ</text>
+          <text x="200" y="116" text-anchor="middle" font-family="serif" font-size="13" fill="rgba(255,255,255,0.6)" font-style="italic">하나님의 이름으로</text>
+          <!-- 칠판 밑줄 -->
+          <line x1="80" y1="130" x2="320" y2="130" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+          <text x="200" y="152" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">방과후 교실 · 베이루트</text>
+          <!-- 칠판 분필 트레이 -->
+          <rect x="60" y="178" width="280" height="8" rx="2" fill="#3a5240"/>
+          <rect x="75" y="180" width="18" height="4" rx="1" fill="#e8d8c0"/>
+          <rect x="100" y="180" width="12" height="4" rx="1" fill="#c8d8c0"/>
+
+          <!-- 창문 (오른쪽) -->
+          <rect x="310" y="55" width="60" height="80" rx="4" fill="#a8c4d4" opacity="0.7"/>
+          <line x1="340" y1="55" x2="340" y2="135" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+          <line x1="310" y1="95" x2="370" y2="95" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+          <!-- 창문 햇살 -->
+          <rect x="310" y="55" width="60" height="80" rx="4" fill="rgba(255,248,220,0.3)"/>
+
+          <!-- 바닥 -->
+          <rect x="0" y="340" width="400" height="160" fill="#c8a870"/>
+          <line x1="0" y1="340" x2="400" y2="340" stroke="#b89858" stroke-width="1.5"/>
+          <!-- 바닥 타일 패턴 -->
+          <line x1="100" y1="340" x2="100" y2="500" stroke="#b89858" stroke-width="0.8" opacity="0.5"/>
+          <line x1="200" y1="340" x2="200" y2="500" stroke="#b89858" stroke-width="0.8" opacity="0.5"/>
+          <line x1="300" y1="340" x2="300" y2="500" stroke="#b89858" stroke-width="0.8" opacity="0.5"/>
+          <line x1="0" y1="400" x2="400" y2="400" stroke="#b89858" stroke-width="0.8" opacity="0.4"/>
+          <line x1="0" y1="455" x2="400" y2="455" stroke="#b89858" stroke-width="0.8" opacity="0.4"/>
+
+          <!-- 책상 1 (앞줄 왼쪽) -->
+          <rect x="55" y="305" width="80" height="45" rx="3" fill="#a07840"/>
+          <rect x="60" y="348" width="8" height="30" rx="2" fill="#8a6430"/>
+          <rect x="120" y="348" width="8" height="30" rx="2" fill="#8a6430"/>
+          <!-- 책 -->
+          <rect x="65" y="295" width="30" height="20" rx="2" fill="#c84848"/>
+          <rect x="100" y="298" width="24" height="16" rx="2" fill="#4870c8"/>
+
+          <!-- 책상 2 (앞줄 오른쪽) -->
+          <rect x="195" y="300" width="80" height="45" rx="3" fill="#a07840"/>
+          <rect x="200" y="343" width="8" height="30" rx="2" fill="#8a6430"/>
+          <rect x="260" y="343" width="8" height="30" rx="2" fill="#8a6430"/>
+          <!-- 공책 -->
+          <rect x="205" y="290" width="28" height="20" rx="2" fill="#e8e0c8"/>
+          <line x1="209" y1="295" x2="229" y2="295" stroke="#c8b898" stroke-width="1"/>
+          <line x1="209" y1="300" x2="229" y2="300" stroke="#c8b898" stroke-width="1"/>
+
+          <!-- 아이 실루엣 1 (왼쪽 책상, 앉아서 쓰는 중) -->
+          <circle cx="95" cy="270" r="18" fill="#7a5030"/>
+          <!-- 머리카락 -->
+          <path d="M77 264 Q95 250 113 264" fill="#4a2810"/>
+          <!-- 몸통 -->
+          <path d="M78 288 Q80 315 95 320 Q110 315 112 288 Q103 282 95 281 Q87 282 78 288 Z" fill="#6a8a50"/>
+          <!-- 팔 (쓰는 동작) -->
+          <path d="M112 295 Q125 300 118 308" stroke="#7a5030" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+          <!-- 아이 실루엣 2 (오른쪽 책상) -->
+          <circle cx="235" cy="265" r="16" fill="#8a6040"/>
+          <path d="M219 260 Q235 248 251 260" fill="#3a2010"/>
+          <path d="M220 282 Q221 308 235 312 Q249 308 250 282 Q242 277 235 276 Q228 277 220 282 Z" fill="#c87840"/>
+
+          <!-- 선생님 실루엣 (서 있음, 중앙) -->
+          <circle cx="200" cy="228" r="20" fill="#5a3820"/>
+          <path d="M180 248 Q180 285 200 292 Q220 285 220 248 Q211 242 200 240 Q189 242 180 248 Z" fill="#4a3868"/>
+          <!-- 선생님 팔 (칠판 가리키는) -->
+          <path d="M180 258 Q155 248 148 238" stroke="#5a3820" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+          <!-- 하단 캡션 -->
+          <rect x="0" y="465" width="400" height="35" fill="rgba(60,38,16,0.6)"/>
+          <text x="200" y="487" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="rgba(255,248,225,0.9)" font-style="italic" letter-spacing="0.5">베이루트 난민 어린이 방과후 교실</text>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact">
+    <div class="contact-grid">
+
+      <!-- 연락처 링크 -->
+      <div class="fade-in">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">연락하기</h2>
+        <p class="section-desc">
+          기도 제목이나 소식을 나누고 싶으시면 언제든지 연락해 주세요.
+        </p>
+
+        <div class="contact-links">
+
+          <a href="mailto:yohan.kim.lebanon@gmail.com" class="contact-link">
+            <div class="contact-icon icon-email">✉️</div>
+            <div class="contact-link-text">
+              <strong>이메일</strong>
+              <span>yohan.kim.lebanon@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="#" class="contact-link">
+            <div class="contact-icon icon-kakao">💬</div>
+            <div class="contact-link-text">
+              <strong>카카오톡</strong>
+              <span>ID: lebanon_yohan</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/lebanon_yohan_mission" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-icon icon-insta">📷</div>
+            <div class="contact-link-text">
+              <strong>인스타그램</strong>
+              <span>@lebanon_yohan_mission</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 교회 위치 정보 -->
+      <div class="fade-in">
+        <p class="section-label">Location</p>
+        <h2 class="section-title">사역지 위치</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          베이루트 아슈라피에 지구에서 현지 교회와 함께 사역하고 있습니다.
+        </p>
+
+        <div class="location-card">
+          <div class="location-info">
+            <h3>베이루트 복음교회</h3>
+            <div class="location-row">
+              <span>📍</span>
+              <span>Rue Sursock, Achrafieh, Beirut, Lebanon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 푸터 ==================== -->
+  <footer>
+    <p>
+      © <span id="year"></span> 김요한·이수정 선교사 · 레바논 베이루트
+    </p>
+    <p style="margin-top:0.4rem;">
+      Made with ❤️ and prayer ·
+      <a href="mailto:yohan.kim.lebanon@gmail.com">yohan.kim.lebanon@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- ==================== JavaScript ==================== -->
+  <script>
+    // 올해 연도 자동 설정
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 스크롤 페이드인 (IntersectionObserver)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fade-in').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      observer.observe(el);
+    });
+
+    // 계좌번호 복사 (clipboard API)
+    function copyAccount(elementId, btn) {
+      const text = document.getElementById(elementId).textContent.trim();
+
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span>✅</span> 복사됨!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // clipboard API 미지원 환경 fallback
+        const range = document.createRange();
+        const el = document.getElementById(elementId);
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        btn.innerHTML = '<span>✅</span> 복사됨!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = '<span>📋</span> 계좌번호 복사';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+  </script>
+
+</body>
+</html>
