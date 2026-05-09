@@ -26,18 +26,20 @@
   -->
 
   <style>
-    /* ==================== CSS 변수 ==================== */
+    /* ==================== CSS 변수 (앙코르 사암 테마) ==================== */
     :root {
-      --sand:      #FAF4E8;
-      --white:     #FFFDF8;
-      --primary:   #C8453C;
-      --primary-d: #8B2C24;
-      --accent:    #D4A24C;
-      --jungle:    #6B8E5A;
-      --sky:       #4A8FB5;
-      --text:      #3A2E22;
-      --muted:     #8A7A68;
-      --radius:    1.2rem;
+      --sand:        #F4E8D0;   /* 앙코르 사암 베이지 */
+      --sand-deep:   #E8D5A8;   /* 짙은 사암 */
+      --white:       #FFFAF0;   /* 따뜻한 화이트 */
+      --primary:     #C8453C;   /* 캄보디아 빨강 */
+      --primary-d:   #8B2C24;   /* 짙은 빨강 */
+      --accent:      #D4A24C;   /* 앙코르 골드 */
+      --accent-d:    #B8862E;   /* 딥 골드 */
+      --jungle:      #6B8E5A;   /* 정글 그린 */
+      --sky:         #4A8FB5;   /* 캄보디아 블루 */
+      --text:        #3A2E22;
+      --muted:       #8A7A68;
+      --radius:      1.2rem;
     }
 
     /* ==================== 리셋 & 기본 ==================== */
@@ -239,11 +241,22 @@
       padding: 100px clamp(1.5rem, 6vw, 5rem) 4rem;
       position: relative;
       background:
-        radial-gradient(ellipse 70% 55% at 25% 35%, rgba(74,143,181,0.30) 0%, transparent 60%),
-        radial-gradient(ellipse 65% 50% at 80% 70%, rgba(212,162,76,0.22) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 80% at 50% 100%, rgba(107,142,90,0.20) 0%, transparent 55%),
-        var(--sand);
+        radial-gradient(ellipse 75% 55% at 20% 30%, rgba(212,162,76,0.42) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 55% at 85% 75%, rgba(184,134,46,0.28) 0%, transparent 58%),
+        radial-gradient(ellipse 60% 80% at 50% 100%, rgba(107,142,90,0.18) 0%, transparent 55%),
+        linear-gradient(135deg, var(--sand) 0%, var(--sand-deep) 100%);
     }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255,250,240,0.4) 1px, transparent 2px),
+                        radial-gradient(circle at 80% 60%, rgba(255,250,240,0.3) 1px, transparent 2px);
+      background-size: 60px 60px, 90px 90px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .hero-inner { position: relative; z-index: 1; }
     .hero-inner { max-width: 720px; }
     .hero-eyebrow {
       font-family: 'Lora', serif;
@@ -324,7 +337,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 75% center;
+      object-position: center;
     }
     .about-badge {
       position: absolute;
@@ -385,25 +398,41 @@
     .ministry-card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 1.8rem;
       box-shadow: 0 4px 20px rgba(139,44,36,0.06);
       border: 1px solid rgba(139,44,36,0.06);
       transition: transform 0.22s, box-shadow 0.22s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .ministry-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 30px rgba(139,44,36,0.12);
     }
+    .ministry-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--sand-deep);
+    }
+    .ministry-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .ministry-card:hover .ministry-thumb img { transform: scale(1.04); }
+    .ministry-body { padding: 1.6rem 1.6rem 1.8rem; }
     .ministry-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 3rem;
-      height: 3rem;
+      width: 2.6rem;
+      height: 2.6rem;
       border-radius: 50%;
-      background: rgba(212,162,76,0.18);
+      background: rgba(212,162,76,0.22);
     }
     .ministry-card h3 {
       font-family: 'Nanum Myeongjo', serif;
@@ -794,7 +823,7 @@
 
       <div class="about-photo-wrap fade-in">
         <div class="about-photo">
-          <img src="images/cambodia/slide-02.jpeg" alt="남기선·임소리 선교사 가족 사진" loading="lazy" />
+          <img src="images/cambodia/extracted/family.jpeg" alt="남기선·임소리 선교사 가족 사진" loading="lazy" />
         </div>
         <div class="about-badge">
           <div class="year">[YEAR]</div>
@@ -859,45 +888,65 @@
     <div class="ministry-grid">
 
       <div class="ministry-card fade-in">
-        <div class="ministry-icon">🏫</div>
-        <h3>임마누엘 유치원</h3>
-        <p>
-          KOMA 커리큘럼으로 기독교 가치관을 가르치는 유치원입니다.
-          현재 원생 20명이 다니고 있으며, 매년 KOMA 교사 수련회와 분기별 세미나를 통해
-          교사들이 영적·교육적으로 성장합니다.
-          올해 2월부터 주일 3:30 선데이스쿨도 시작했습니다.
-        </p>
+        <div class="ministry-thumb">
+          <img src="images/cambodia/extracted/kindergarten.jpeg" alt="임마누엘 유치원 아이들" loading="lazy" />
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">🏫</div>
+          <h3>임마누엘 유치원</h3>
+          <p>
+            KOMA 커리큘럼으로 기독교 가치관을 가르치는 유치원입니다.
+            현재 원생 20명이 다니고 있으며, 매년 KOMA 교사 수련회와 분기별 세미나를 통해
+            교사들이 영적·교육적으로 성장합니다.
+            올해 2월부터 주일 3:30 선데이스쿨도 시작했습니다.
+          </p>
+        </div>
       </div>
 
       <div class="ministry-card fade-in">
-        <div class="ministry-icon">⛪</div>
-        <h3>제자교회 9곳</h3>
-        <p>
-          프놈펜·뷔히어쑤어·쁘레악따메아·삐어리·스누얼·아오랄·끄로쩨·껵니엑·가오시마.
-          각 지역에서 셀그룹 구역예배와 성경공부를 통해
-          말씀 위에 굳건한 믿음을 세우고 현지 사역자를 양육하고 있습니다.
-        </p>
+        <div class="ministry-thumb">
+          <img src="images/cambodia/extracted/disciples.jpeg" alt="제자교회 청년들과 함께" loading="lazy" />
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">⛪</div>
+          <h3>제자교회 9곳</h3>
+          <p>
+            프놈펜·뷔히어쑤어·쁘레악따메아·삐어리·스누얼·아오랄·끄로쩨·껵니엑·가오시마.
+            각 지역에서 셀그룹 구역예배와 성경공부를 통해
+            말씀 위에 굳건한 믿음을 세우고 현지 사역자를 양육하고 있습니다.
+          </p>
+        </div>
       </div>
 
       <div class="ministry-card fade-in">
-        <div class="ministry-icon">🎓</div>
-        <h3>장학생·단기팀 사역</h3>
-        <p>
-          쁘레악따메아 교회에서 장학금을 지원받던 4명의 학생이
-          올해 1월 CKCC 한국어학과에 입학했습니다.
-          매년 단기팀과 함께 어린이 문화사역을 진행하며
-          아오랄·스누얼 교회 학업 지원도 이어가고 있습니다.
-        </p>
+        <div class="ministry-thumb">
+          <img src="images/cambodia/extracted/ministry-collage.jpeg" alt="단기팀과 장학생 사역 현장" loading="lazy" />
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">🎓</div>
+          <h3>장학생·단기팀 사역</h3>
+          <p>
+            쁘레악따메아 교회에서 장학금을 지원받던 4명의 학생이
+            올해 1월 CKCC 한국어학과에 입학했습니다.
+            매년 단기팀과 함께 어린이 문화사역을 진행하며
+            아오랄·스누얼 교회 학업 지원도 이어가고 있습니다.
+          </p>
+        </div>
       </div>
 
       <div class="ministry-card fade-in">
-        <div class="ministry-icon">🐷</div>
-        <h3>시골교회 자립 지원</h3>
-        <p>
-          재정적으로 어려운 시골교회 사역자들이 자립할 수 있도록 돕고 있습니다.
-          스누얼교회 사역자는 돼지를 키워 가정과 교회를 섬기고 있으며,
-          저희는 자녀 장학금과 돼지 사료비를 지원하고 있습니다.
-        </p>
+        <div class="ministry-thumb">
+          <img src="images/cambodia/extracted/church-school.jpeg" alt="시골교회 어린이 사역" loading="lazy" />
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">🐷</div>
+          <h3>시골교회 자립 지원</h3>
+          <p>
+            재정적으로 어려운 시골교회 사역자들이 자립할 수 있도록 돕고 있습니다.
+            스누얼교회 사역자는 돼지를 키워 가정과 교회를 섬기고 있으며,
+            저희는 자녀 장학금과 돼지 사료비를 지원하고 있습니다.
+          </p>
+        </div>
       </div>
 
     </div>
@@ -913,29 +962,33 @@
       </p>
     </div>
 
+    <p style="text-align:center;color:var(--muted);font-size:0.82rem;margin:-2rem auto 2.5rem;max-width:42ch;">
+      썸네일은 사진만, 클릭하시면 선교 보고 서신 전문(텍스트 포함)을 큰 화면으로 보실 수 있습니다.
+    </p>
+
     <div class="gallery-grid">
       <div class="gallery-item fade-in" data-idx="0">
-        <img src="images/cambodia/slide-02.jpeg" alt="가족 인사 슬라이드" loading="lazy" />
+        <img src="images/cambodia/extracted/family.jpeg" alt="선교사 가족 사진" loading="lazy" />
         <div class="gallery-caption">① 가족 인사</div>
       </div>
       <div class="gallery-item fade-in" data-idx="1">
-        <img src="images/cambodia/slide-03.jpeg" alt="캄보디아 현장 소식 슬라이드" loading="lazy" />
+        <img src="images/cambodia/extracted/ministry-collage.jpeg" alt="캄보디아 현장 사역 콜라주" loading="lazy" />
         <div class="gallery-caption">② 캄보디아 현장 소식</div>
       </div>
       <div class="gallery-item fade-in" data-idx="2">
-        <img src="images/cambodia/slide-04.jpeg" alt="교회학교 슬라이드" loading="lazy" />
+        <img src="images/cambodia/extracted/church-school.jpeg" alt="교회학교 사역 콜라주" loading="lazy" />
         <div class="gallery-caption">③ 교회학교 · 지역 복음화</div>
       </div>
       <div class="gallery-item fade-in" data-idx="3">
-        <img src="images/cambodia/slide-05.jpeg" alt="임마누엘 유치원 슬라이드" loading="lazy" />
+        <img src="images/cambodia/extracted/kindergarten.jpeg" alt="임마누엘 유치원 콜라주" loading="lazy" />
         <div class="gallery-caption">④ 임마누엘 유치원</div>
       </div>
       <div class="gallery-item fade-in" data-idx="4">
-        <img src="images/cambodia/slide-06.jpeg" alt="기도제목 1 슬라이드" loading="lazy" />
-        <div class="gallery-caption">⑤ 기도제목 Ⅰ</div>
+        <img src="images/cambodia/extracted/disciples.jpeg" alt="제자교회 청년들" loading="lazy" />
+        <div class="gallery-caption">⑤ 기도제목 Ⅰ · 제자교회</div>
       </div>
       <div class="gallery-item fade-in" data-idx="5">
-        <img src="images/cambodia/slide-07.jpeg" alt="기도제목 2 슬라이드" loading="lazy" />
+        <img src="images/cambodia/extracted/daughters.jpeg" alt="첫째 예랑과 둘째 자매" loading="lazy" />
         <div class="gallery-caption">⑥ 기도제목 Ⅱ · 첫째 예랑</div>
       </div>
     </div>
@@ -1052,7 +1105,7 @@
       </div>
 
       <div class="support-photo fade-in">
-        <img src="images/cambodia/slide-05.jpeg" alt="임마누엘 유치원 아이들" loading="lazy" />
+        <img src="images/cambodia/extracted/kindergarten.jpeg" alt="임마누엘 유치원 아이들" loading="lazy" />
       </div>
 
     </div>
